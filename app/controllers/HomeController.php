@@ -42,7 +42,7 @@ class HomeController extends BaseController {
 		switch ($type) {
 			case '1': # Các tour du lịch vùng Núi Rừng Biển Đảo
 				$title .= 'Núi';
-				$tours = Tour::where('loaitour', '=', $type)->take(12)->get();
+				// $tours = Tour::where('loaitour', '=', $type)->take(12)->get();
 				break;
 			case '2': # Các tour du lịch vùng Núi Rừng Biển Đảo
 				$title .= 'Rừng';

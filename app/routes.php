@@ -18,5 +18,5 @@
 
 Route::get('/', 'HomeController@home');
 Route::get('/detail', 'HomeController@detail');
-Route::get('/tour/{type?}', 'HomeController@tour');
+Route::get('/tour/{type?}', 'HomeController@tour'); //
 Route::get('/admin', 'AdminController@home');
