@@ -15,8 +15,8 @@
                         </span>
                     </div>
                     <div class="panel-body">
-                        <h4>Service One</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <h4><?php echo $spec_tour->tentour;?></h4>
+                        <p><?php echo  $spec_tour->chuongtrinh['gioithieu'];?></p>
                         <a href="#" class="btn btn-primary">Xem</a>
                         <a href="#" class="btn btn-success">Đặt</a>
                     </div>

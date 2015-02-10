@@ -6,7 +6,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="index.html">HOME</a>
+    {{ HTML::linkAction('HomeController@tour', 'HOME', array(), array('class' => 'navbar-brand')) }}
+    <!-- <a class="navbar-brand" href="">HOME</a> -->
 </div>
 <!-- Collect the nav links, forms, and other content for toggling -->
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -18,4 +19,4 @@
         </li>
     </ul>
 </div>
-<!-- /.navbar-collapse -->
+<!-- /.navbar-collapse

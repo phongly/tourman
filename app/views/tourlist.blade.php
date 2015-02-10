@@ -1,7 +1,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-    <h1 class="page-header"><?php echo count($tours);
+    <h1 class="page-header"><?php //echo count($tours);
     echo $heade_title;?> </h1>
         <?php foreach ($tours as $tour):?>        
         <div class="col-md-4 img-portfolio">
