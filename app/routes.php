@@ -16,7 +16,9 @@
 // 	return View::make('index');
 // });
 
-Route::get('/', 'HomeController@home');
+Route::get('/', function () {
+	return Redirect::to('/tour');
+});
 Route::get('/detail', 'HomeController@detail');
-Route::get('/tour/{type?}', 'HomeController@tour'); //
+Route::get('/tour/{type?}', 'HomeController@tour'); 
 Route::get('/admin', 'AdminController@home');

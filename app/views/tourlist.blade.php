@@ -1,19 +1,20 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-    <h1 class="page-header"><?php echo $title;
-    //print_r($tours[0]['attributes']['tentour']);?> </h1>
-<!--         <?php foreach ($tours as $tour):?>        
+    <h1 class="page-header"><?php echo count($tours);
+    echo $heade_title;?> </h1>
+        <?php foreach ($tours as $tour):?>        
         <div class="col-md-4 img-portfolio">
             <a href="/detail">
-                <img class="img-responsive img-hover" src="http://placehold.it/700x400" alt="">
+                <!-- <img class="img-responsive img-hover" src="http://placehold.it/700x400" alt="HINH">  -->
+                HINH
             </a>
             <h3>
-                <a href="portfolio-item.html"><?php echo $tour['attributes']['tentour'];?></a>
+                <a href="portfolio-item.html"><?php echo $tour->tentour; $chuongtrinh = $tour->chuongtrinh;?></a>
             </h3>
-            <p><?php echo $tour['attributes']['gioithieu'];?></p>
+            <p><?php echo $chuongtrinh['gioithieu'];?></p>
         </div>
-        <?php endforeach; ?> -->
+        <?php endforeach; ?>
 </div>
 </div>
 <div class="row text-center">

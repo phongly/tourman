@@ -5,9 +5,8 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class Chuongtrinh extends Eloquent implements UserInterface, RemindableInterface {
+class Chuongtrinh extends Eloquent{
 
-	use UserTrait, RemindableTrait;
 
 	/**
 	 * The database table used by the model.
@@ -18,7 +17,7 @@ class Chuongtrinh extends Eloquent implements UserInterface, RemindableInterface
 	protected $primaryKey = 'ma';
 	public function tours()
 	{
-		return $this->belongsTo('tours', 'matour', 'ma');
+		return $this->belongsTo('tours');
 	}
 
 }

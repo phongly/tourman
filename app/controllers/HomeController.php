@@ -23,45 +23,79 @@ class HomeController extends BaseController {
 	public function showWelcome()
 	{
 		$this->layout->content = View::make('threetour');
+		return Redirect::to('/tour');
 		// return View::make('layouts.master');
 	}
-	public function home()
-	{
-		$view = View::make('threetour');
-		$this->layout->content = $view;
-	}
+	// public function home()
+	// {
+	// 	$view = View::make('threetour');
+	// 	$this->layout->content = $view;
+	// }
 	public function tour($type='0')
 	{
-		$tour_model = Tour::findOrFail(1);
-		$title = "Các tour du lịch vùng ";
+		// $tour_model = Tour::findOrFail(1);
+		$heade_title = "Các tour du lịch vùng ";
 		$view_name = 'tourlist';
-		// $tour_model  = new Tour;
+		$tour_model  = new Tour;
 		// $chuongtrinh = new Chuongtrinh;
+		$active = 'fasle';
+		$class = [];
+		$page_header = [];
 		$tours = [];
 		$list_type = [];
 		switch ($type) {
 			case '1': # Các tour du lịch vùng Núi Rừng Biển Đảo
-				$title .= 'Núi';
+				$heade_title .= 'Núi';
+				// $tours = Tour::where('loaitour', '=', $type)->chuongtrinh()->get();
+				// $comments = Post::find(1)->comments()->where('title', '=', 'foo')->first();
+				// $count = User::where('votes', '>', 100)->count();
+				// $affectedRows = User::where('votes', '>', 100)->update(array('status' => 2));
+				// $user = User::find(1);
+
+				// $user->delete();
+				// $affectedRows = User::where('votes', '>', 100)->delete();
 				// $tours = Tour::where('loaitour', '=', $type)->take(12)->get();
 				break;
 			case '2': # Các tour du lịch vùng Núi Rừng Biển Đảo
-				$title .= 'Rừng';
+				$heade_title .= 'Rừng';
 				break;
 			case '3': # Các tour du lịch vùng Núi Rừng Biển Đảo
-				$title .= 'Biển';
+				$heade_title .= 'Biển';
 				break;
 			case '4': # Các tour du lịch vùng Núi Rừng Biển Đảo
-				$title .= 'Đảo';
+				$heade_title .= 'Đảo';
 				break;
 			case '5':
-				$title = 'Các tour du lịch của bạn';
+				$heade_title = 'Các tour du lịch của bạn';
 				break;
 			default:
-				$title = ' ';
+				$heade_title = ' ';
 				$view_name = 'threetour';
 				break;
 		}
-		$view = View::make($view_name, ['title'=>$title, 'tours'=>$tours]);
+		if ($type == '0') {
+			$tour_moi_nhat = Tour::orderBy('ma', 'DESC')->take(4)->get();
+			$tour_xem_nhat = Tour::orderBy('xem', 'DESC')->take(4)->get();
+			$tour_danhgia_nhat = Tour::orderBy('danhgia', 'DESC')->take(4)->get();
+			$tours['moi'] = $tour_moi_nhat;
+			$tours['xem'] = $tour_xem_nhat;
+			$tours['danhgia'] = $tour_danhgia_nhat;
+
+			$class = array(
+			'moi' => "page-header alert alert-info", 
+			'xem'=> "page-header alert alert-warning", 
+			'danhgia' => "page-header alert alert-success");
+			
+			$page_header = array(
+			'moi' => "Tour mới nhất", 
+			'xem'=> "Tour được xem nhiều nhất", 
+			'danhgia' => "Tour đánh giá cao nhất");
+		}
+		else
+		{
+			$tours = Tour::where('loaitour', '=', $type)->take(12)->get();
+		}
+		$view = View::make($view_name, ['heade_title'=>$heade_title, 'tours'=>$tours, 'class' => $class, 'page_header'=>$page_header ]);
 		$this->layout->content = $view;		
 	}
 	public function detail()
