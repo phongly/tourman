@@ -38,7 +38,7 @@ class HomeController extends BaseController {
 		$view_name = 'tourlist';
 		$tour_model  = new Tour;
 		// $chuongtrinh = new Chuongtrinh;
-		$active = 'fasle';
+		// $active = 'fasle';
 		$class = [];
 		$page_header = [];
 		$tours = [];
@@ -55,18 +55,21 @@ class HomeController extends BaseController {
 				// $user->delete();
 				// $affectedRows = User::where('votes', '>', 100)->delete();
 				// $tours = Tour::where('loaitour', '=', $type)->take(12)->get();
+
 				break;
 			case '2': # Các tour du lịch vùng Núi Rừng Biển Đảo
 				$heade_title .= 'Rừng';
 				break;
 			case '3': # Các tour du lịch vùng Núi Rừng Biển Đảo
 				$heade_title .= 'Biển';
+				$active = 'true';
 				break;
 			case '4': # Các tour du lịch vùng Núi Rừng Biển Đảo
 				$heade_title .= 'Đảo';
 				break;
 			case '5':
 				$heade_title = 'Các tour du lịch của bạn';
+				$active = 'true';
 				break;
 			default:
 				$heade_title = ' ';
@@ -85,7 +88,7 @@ class HomeController extends BaseController {
 			'moi' => "page-header alert alert-info", 
 			'xem'=> "page-header alert alert-warning", 
 			'danhgia' => "page-header alert alert-success");
-			
+
 			$page_header = array(
 			'moi' => "Tour mới nhất", 
 			'xem'=> "Tour được xem nhiều nhất", 
@@ -94,8 +97,11 @@ class HomeController extends BaseController {
 		else
 		{
 			$tours = Tour::where('loaitour', '=', $type)->take(12)->get();
+
 		}
+		$active[$type] = 'active';
 		$view = View::make($view_name, ['heade_title'=>$heade_title, 'tours'=>$tours, 'class' => $class, 'page_header'=>$page_header ]);
+		$this->layout->with('active', $active);
 		$this->layout->content = $view;		
 	}
 	public function detail()
