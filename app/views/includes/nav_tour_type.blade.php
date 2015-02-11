@@ -11,12 +11,12 @@
   <li role="presentation"><a href="#">Biển</a></li>
   <li role="presentation"><a href="#">Đảo</a></li>  -->
   <!-- HomeController@tour -->
-  <li><?php echo $active;?></li>
-  <li role="presentation" class="<?php echo $active[0];?>" >{{ HTML::linkAction('HomeController@tour', 'Mặc Định', array(), array('class' => ' ')) }}</li>
-  <li role="presentation" class="<?php echo $active[1];?>" >{{ HTML::linkAction('HomeController@tour', 'Núi', array(1), array('class' => ' ')) }}</li>
-  <li role="presentation" class="<?php echo $active[2];?>" >{{ HTML::linkAction('HomeController@tour', 'Rừng', array(2), array('class' => ' ')) }}</li>
-  <li role="presentation" class="<?php echo $active[3];?>" >{{ HTML::linkAction('HomeController@tour', 'Biển', array(3), array('class' => ' ')) }}</li>
-  <li role="presentation" class="<?php echo $active[4];?>" >{{ HTML::linkAction('HomeController@tour', 'Đảo', array(4), array('class' => '' )) }}</li> 
+<!--   <li>{{{$type}}}</li> -->
+  <li role="presentation" class="{{{($type == 0)?'active': ' '}}}" >{{ HTML::linkAction('HomeController@tour', 'Mặc Định', array(), array('class' => ' ')) }}</li>
+  <li role="presentation" class="{{{($type == 1)?'active': ' '}}}" >{{ HTML::linkAction('HomeController@tour', 'Núi', array(1), array('class' => ' ')) }}</li>
+  <li role="presentation" class="{{{($type == 2)?'active': ' '}}}" >{{ HTML::linkAction('HomeController@tour', 'Rừng', array(2), array('class' => ' ')) }}</li>
+  <li role="presentation" class="{{{($type == 3)?'active': ' '}}}" >{{ HTML::linkAction('HomeController@tour', 'Biển', array(3), array('class' => ' ')) }}</li>
+  <li role="presentation" class="{{{($type == 4)?'active': ' '}}}" >{{ HTML::linkAction('HomeController@tour', 'Đảo', array(4), array('class' => '' )) }}</li> 
 </ul>
 </div>
 <!-- <div class="col-md-1"></div> -->

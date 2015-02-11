@@ -1,7 +1,5 @@
 <?php
-
 class HomeController extends BaseController {
-
 	/*
 	|--------------------------------------------------------------------------
 	| Default Home Controller
@@ -39,6 +37,7 @@ class HomeController extends BaseController {
 		$tour_model  = new Tour;
 		// $chuongtrinh = new Chuongtrinh;
 		// $active = 'fasle';
+		$active = [];
 		$class = [];
 		$page_header = [];
 		$tours = [];
@@ -51,29 +50,31 @@ class HomeController extends BaseController {
 				// $count = User::where('votes', '>', 100)->count();
 				// $affectedRows = User::where('votes', '>', 100)->update(array('status' => 2));
 				// $user = User::find(1);
-
 				// $user->delete();
 				// $affectedRows = User::where('votes', '>', 100)->delete();
 				// $tours = Tour::where('loaitour', '=', $type)->take(12)->get();
-
+				$active[$type] = 'active';
 				break;
 			case '2': # Các tour du lịch vùng Núi Rừng Biển Đảo
 				$heade_title .= 'Rừng';
+				$active[$type] = 'active';
 				break;
 			case '3': # Các tour du lịch vùng Núi Rừng Biển Đảo
 				$heade_title .= 'Biển';
-				$active = 'true';
+				$active[$type] = 'active';
 				break;
 			case '4': # Các tour du lịch vùng Núi Rừng Biển Đảo
 				$heade_title .= 'Đảo';
+				$active[$type] = 'active';
 				break;
 			case '5':
 				$heade_title = 'Các tour du lịch của bạn';
-				$active = 'true';
+				$active[$type] = 'active';
 				break;
 			default:
 				$heade_title = ' ';
 				$view_name = 'threetour';
+				$active[$type] = 'active';
 				break;
 		}
 		if ($type == '0') {
@@ -83,12 +84,10 @@ class HomeController extends BaseController {
 			$tours['moi'] = $tour_moi_nhat;
 			$tours['xem'] = $tour_xem_nhat;
 			$tours['danhgia'] = $tour_danhgia_nhat;
-
 			$class = array(
 			'moi' => "page-header alert alert-info", 
 			'xem'=> "page-header alert alert-warning", 
 			'danhgia' => "page-header alert alert-success");
-
 			$page_header = array(
 			'moi' => "Tour mới nhất", 
 			'xem'=> "Tour được xem nhiều nhất", 
@@ -97,11 +96,10 @@ class HomeController extends BaseController {
 		else
 		{
 			$tours = Tour::where('loaitour', '=', $type)->take(12)->get();
-
 		}
-		$active[$type] = 'active';
 		$view = View::make($view_name, ['heade_title'=>$heade_title, 'tours'=>$tours, 'class' => $class, 'page_header'=>$page_header ]);
 		$this->layout->with('active', $active);
+		$this->layout->with('type', $type);
 		$this->layout->content = $view;		
 	}
 	public function detail()
@@ -109,5 +107,4 @@ class HomeController extends BaseController {
 		$view = View::make('detail');
 		$this->layout->content = $view;		
 	}
-
 }
