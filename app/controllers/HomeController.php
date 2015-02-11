@@ -102,8 +102,9 @@ class HomeController extends BaseController {
 		$this->layout->with('type', $type);
 		$this->layout->content = $view;		
 	}
-	public function detail()
+	public function detail($matour)
 	{
+		$tour = Tour::find($matour);
 		$view = View::make('detail');
 		$this->layout->content = $view;		
 	}
