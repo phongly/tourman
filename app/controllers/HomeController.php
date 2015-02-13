@@ -35,8 +35,12 @@ class HomeController extends BaseController {
 		$heade_title = "Các tour du lịch vùng ";
 		$view_name = 'tourlist';
 		$tour_model  = new Tour;
+		$nguoidung = Nguoidung::find('1');
+		$phieudat = $nguoidung->phieudat;
+		// $thetour = $phieudat[0]->tour;
 		// $chuongtrinh = new Chuongtrinh;
 		// $active = 'fasle';
+		$khach = '';
 		$active = [];
 		$class = [];
 		$page_header = [];
@@ -70,6 +74,7 @@ class HomeController extends BaseController {
 			case '5':
 				$heade_title = 'Các tour du lịch của bạn';
 				$active[$type] = 'active';
+				$makhach = '1';
 				break;
 			default:
 				$heade_title = ' ';
@@ -93,6 +98,13 @@ class HomeController extends BaseController {
 			'xem'=> "Tour được xem nhiều nhất", 
 			'danhgia' => "Tour đánh giá cao nhất");
 		}
+		elseif ($type == '5') {
+			$nguoidung = Nguoidung::find('1');
+			$phieudat = $nguoidung->phieudat;
+			foreach ($phieudat as $phieu) {
+				$tours[] = $phieu->tour;
+			}
+		}
 		else
 		{
 			$tours = Tour::where('loaitour', '=', $type)->take(12)->get();
@@ -100,12 +112,30 @@ class HomeController extends BaseController {
 		$view = View::make($view_name, ['heade_title'=>$heade_title, 'tours'=>$tours, 'class' => $class, 'page_header'=>$page_header ]);
 		$this->layout->with('active', $active);
 		$this->layout->with('type', $type);
+		$this->layout->with('khach', $khach);
+		// $this->layout->with('nguoidung', $nguoidung);
+		// $this->layout->with('phieudat', $phieudat);
 		$this->layout->content = $view;		
 	}
-	public function detail($matour)
+	public function detail($matour='')
 	{
+		$khach = '';
+		if($matour == '') {
+			return Redirect::to('/tour');			
+		}
+
 		$tour = Tour::find($matour);
-		$view = View::make('detail');
+		$view = View::make('detail', ['tour'=>$tour]);
 		$this->layout->content = $view;		
+	}
+	public function login() {
+
+		$khach = Nguoidung::where(function ($query) {
+			$ten = Input::get('user');
+			$matkhau = md5(Input::get('password'));
+			$query->where('ten', '=', $ten)
+					->where('matkhau', '=', $matkhau)->get();
+		});
+		$this->layout->with('khach', $khach);
 	}
 }

@@ -5,7 +5,7 @@
     echo $heade_title;?> </h1>
         <?php foreach ($tours as $tour):?>        
         <div class="col-md-4 img-portfolio">
-            <a href="/detail">
+            <a href="/gitclone/tourman/public/detail/<?php echo $tour->ma; ?>">
                 <!-- <img class="img-responsive img-hover" src="http://placehold.it/700x400" alt="HINH">  -->
                 HINH
             </a>

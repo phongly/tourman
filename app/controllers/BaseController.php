@@ -1,5 +1,5 @@
 <?php
-
+// use Illuminate\Http\RedirectResponse;
 class BaseController extends Controller {
 
 	/**

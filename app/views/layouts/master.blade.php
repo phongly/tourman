@@ -5,7 +5,15 @@
 <head>
     @include('includes.head')
 </head>
-
+<style>
+.detail-info {
+    /*color: rgb(136, 176, 136);*/
+    color: rgb(114, 177, 232);
+    font-size: medium;
+}
+        .hero-unit { background-color: #fff; }
+        .center { display: block; margin: 0 auto; }
+</style>
 <body>
 
     <!-- Navigation -->
@@ -28,7 +36,7 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <div class="item active">
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
+                <div class="fill" style="background-image:url('/img/banners/moutains.jpg&text=Slide One');"></div>
                 <div class="carousel-caption">
                     <h2>Caption 1</h2>
                 </div>
@@ -71,11 +79,11 @@
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    {{ HTML::script('templates/modern_business/js/jquery.js') }}
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
 
+    {{ HTML::script('templates/modern_business/js/bootstrap.js') }}
     <!-- Script to Activate the Carousel -->
     <script>
     $('.carousel').carousel({

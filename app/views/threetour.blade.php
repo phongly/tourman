@@ -16,8 +16,8 @@
                     <div class="panel-body">
                         <h4>{{$spec_tour->tentour}}</h4>
                         <p>{{$spec_tour->chuongtrinh['gioithieu']}}</p>
-                        <a href="#" class="btn btn-primary">Xem</a>
-                        <a href="#" class="btn btn-success">Đặt</a>
+                        <a href="detail/{{$spec_tour->ma}}" class="btn btn-primary">Xem</a>
+                        <a href="" class="btn btn-success">Đặt</a>
                     </div>
                 </div>
             </div>
