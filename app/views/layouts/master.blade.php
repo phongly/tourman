@@ -33,24 +33,24 @@
             <li data-target="#myCarousel" data-slide-to="2"></li>
         </ol>
 
-        <!-- Wrapper for slides -->
+        <!-- Wrapper for slides ="{{ asset('img/logo.png') }}"-->
         <div class="carousel-inner">
             <div class="item active">
-                <div class="fill" style="background-image:url('/img/banners/moutains.jpg&text=Slide One');"></div>
+                <div class="fill" style="background-image:url({{ asset('img/banners/mountains.jpg'); }});"></div> 
                 <div class="carousel-caption">
-                    <h2>Caption 1</h2>
+                    <h2></h2>
                 </div>
             </div>
             <div class="item">
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
+                <div class="fill" style="background-image:url({{ asset('img/banners/beach.jpg'); }});"></div>
                 <div class="carousel-caption">
-                    <h2>Caption 2</h2>
+                    <h2></h2>
                 </div>
             </div>
             <div class="item">
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
+                <div class="fill" style="background-image:url({{ asset('img/banners/original.jpg'); }});"></div>
                 <div class="carousel-caption">
-                    <h2>Caption 3</h2>
+                    <h2></h2>
                 </div>
             </div>
         </div>

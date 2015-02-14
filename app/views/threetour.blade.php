@@ -1,22 +1,19 @@
 @section('content')
 <div class="row">
-@foreach ($tours as $filter=>$tour)
+@foreach ($tours as $filter=>$spec_tours)
      <div class="col-lg-12">
         <div class="row"><div class="col-md-3"><h4 class="{{$class[$filter]}}"> {{$page_header[$filter]}} </h4></div></div> 
         <!-- <div class="row"><div class="col-md-3"><h4 class="<?php echo $class[$filter]; ?>"> <?php echo $page_header[$filter]; ?> </h4></div></div>  -->
-        @foreach ($tour as $spec_tour)            
+        @foreach ($spec_tours as $tour)            
                 <div class="col-md-3 col-sm-6">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
-                        <span class="fa-stack fa-5x">
-                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                              <i class="fa fa-tree fa-stack-1x fa-inverse"></i>
-                        </span>
+                        {{ HTML::image('/img/'.$tour->hinhanh, 'a picture', array('class' => 'img-responsive img-hover')) }}
                     </div>
                     <div class="panel-body">
-                        <h4>{{$spec_tour->tentour}}</h4>
-                        <p>{{$spec_tour->chuongtrinh['gioithieu']}}</p>
-                        <a href="detail/{{$spec_tour->ma}}" class="btn btn-primary">Xem</a>
+                        <h4>{{$tour->tentour}}</h4>
+                        <p>{{$tour->chuongtrinh['gioithieu']}}</p>
+                        <a href="detail/{{$tour->ma}}" class="btn btn-primary">Xem</a>
                         <a href="" class="btn btn-success">Đặt</a>
                     </div>
                 </div>

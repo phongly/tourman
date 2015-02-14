@@ -16,7 +16,7 @@
 <!-- Custom Fonts -->
 {{ HTML::style('templates/modern_business/font-awesome/css/font-awesome.min.css') }}
 
-{{ HTML::style('css/style.css') }}
+{{ HTML::style('/css/style.css') }}
 {{ HTML::script('templates/modern_business/js/bootstrap.js') }}
 {{ HTML::script('templates/modern_business/js/jquery.js') }}
 <!-- <link href="templates/modern_business/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
