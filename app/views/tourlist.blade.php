@@ -7,7 +7,7 @@
         <div class="col-md-4 img-portfolio">
             <a href="/gitclone/tourman/public/detail/<?php echo $tour->ma; ?>">
                 <!-- <img class="img-responsive img-hover" src="{{ asset('/img/{{{$tour->hinhanh}}}') }} {{{$tour->hinhanh}}} " alt="HINH">  -->
-                {{ HTML::image('/img/'.$tour->hinhanh, 'a picture', array('class' => 'img-responsive img-hover', 'width' => '700', 'height' => 'height')) }}
+                {{ HTML::image('/img/'.$tour->hinhanh, 'a picture', array('class' => 'img-responsive img-hover', 'width' => '700', 'height' => '400')) }}
             </a>
             <h3>
                 <a href="portfolio-item.html"><?php echo $tour->tentour; $chuongtrinh = $tour->chuongtrinh;?></a>

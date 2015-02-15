@@ -19,4 +19,8 @@ class Tour extends Eloquent {
 	{
 		return $this->hasOne('Dattour', 'matour');
 	}
+	public function phuongtien()
+	{
+		return $this->hasMany('Phuongtien', 'matour', 'ma');
+	}
 }

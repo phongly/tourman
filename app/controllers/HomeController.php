@@ -56,7 +56,7 @@ class HomeController extends BaseController {
 				// $user = User::find(1);
 				// $user->delete();
 				// $affectedRows = User::where('votes', '>', 100)->delete();
-				// $tours = Tour::where('loaitour', '=', $type)->take(12)->get();
+				// $tours = Tour::wherloe('loaitour', '=', $type)->take(12)->get();
 				$active[$type] = 'active';
 				break;
 			case '2': # Các tour du lịch vùng Núi Rừng Biển Đảo
@@ -123,9 +123,12 @@ class HomeController extends BaseController {
 		if($matour == '') {
 			return Redirect::to('/tour');			
 		}
-
+		// $phuongtiens = URL::to('/phuongtien/'.$matour);
+		// $phuongtiens = $this->client->get('/phuongtien/'.$matour);
+		// return $phuongtiens;
 		$tour = Tour::find($matour);
-		$view = View::make('detail', ['tour'=>$tour]);
+		$tours_lienquan = Tour::where('loaitour', $tour->loaitour)->take(6)->get();
+		$view = View::make('detail', ['tour'=>$tour, 'tours_lienquan'=>$tours_lienquan]);
 		$this->layout->content = $view;		
 	}
 	public function login() {

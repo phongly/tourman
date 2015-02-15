@@ -23,10 +23,9 @@ Route::get('/detail/{matour?}', 'HomeController@detail');
 Route::get('/tour/{type?}', 'HomeController@tour'); 
 Route::get('/admin', 'AdminController@home');
 Route::post('/login', 'HomeController@login');
-Route::group(array('prefix' => 'api/v1'), function()
-{
-    Route::resource('phuongtien', 'PhuongtienController');
-});
+//restful Api
+Route::resource('phuongtien', 'PhuongtienController');
+
 Route::group(array('prefix' => 'api/v1'), function()
 {
     Route::resource('khachsan', 'KhachsanController');
